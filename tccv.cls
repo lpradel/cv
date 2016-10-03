@@ -31,7 +31,7 @@
 
 \setcounter{secnumdepth}{-1}
 \RequirePackage[hmargin=1.25cm,vmargin=1.25cm,twocolumn,columnsep=1.25cm]{geometry}
-\RequirePackage{charter,etoolbox,hyperref,needspace,pifont,tabularx,xcolor}
+\RequirePackage{charter,etoolbox,hyperref,needspace,pifont,tabularx,xcolor,fontawesome}
 
 % Capitalize words of at least a minimum length (default to 3 chars).
 % The text is capitalized before being expanded.
@@ -110,17 +110,18 @@
 % \personal[optional: web site without scheme (no http:// prefix)]
 %          {address}{phone number}{email}
 % ]|
-\newcommand\personal[4][]{%
+\newcommand\personal[5][]{%
     \newcommand\SYMBOL[1]{\raisebox{-2pt}{\Large\ding{##1}}}%
     \needspace{0.5\textheight}%
     \newdimen\boxwidth%
     \boxwidth=\dimexpr\linewidth-2\fboxsep\relax%
     \colorbox[HTML]{F5DD9D}{%
     \begin{tabularx}{\boxwidth}{c|X}
-    \SYMBOL{45} & {#2}\smallskip\\
+    \faHome & {#2}\smallskip\\
     \SYMBOL{37} & {#3}\smallskip\\
     \SYMBOL{41} & \href{mailto:#4}{#4}
-    \ifstrempty{#1}{}{\smallskip\\ \SYMBOL{218} & \href{http://#1}{#1}}
+    \ifstrempty{#1}{}{\smallskip\\ \faLink & \href{http://#1}{#1}}
+    \smallskip\\ \faGithub & \href{http://#5}{#5}
     \end{tabularx}}}
 
 % Every \item can be followed by one or more paragraphs
